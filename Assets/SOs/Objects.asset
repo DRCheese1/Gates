@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f18bce441c13a614c8c3c5154dcb25e2, type: 3}
+  m_Name: Objects
+  m_EditorClassIdentifier: 
+  GridObjectData:
+  - <Name>k__BackingField: Flat box
+    <Id>k__BackingField: 0
+    <Size>k__BackingField: {x: 1, y: 1}
+    <Prefab>k__BackingField: {fileID: 7555662370556413709, guid: aad6920f412b9bf499efb4737d19a4fd, type: 3}
+  - <Name>k__BackingField: Floaty box
+    <Id>k__BackingField: 1
+    <Size>k__BackingField: {x: 1, y: 1}
+    <Prefab>k__BackingField: {fileID: 2011266630248031834, guid: 73463165e62039248905743871e44f10, type: 3}
+  - <Name>k__BackingField: Long floaty box
+    <Id>k__BackingField: 2
+    <Size>k__BackingField: {x: 1, y: 2}
+    <Prefab>k__BackingField: {fileID: 6287003559819044326, guid: 01ae252aaf04ec84b8d1241cd452a6f4, type: 3}
+  - <Name>k__BackingField: Big floaty box
+    <Id>k__BackingField: 3
+    <Size>k__BackingField: {x: 2, y: 2}
+    <Prefab>k__BackingField: {fileID: 6809162841636393467, guid: d8aa79ddff8e9824187f3a872e1fbdb3, type: 3}
