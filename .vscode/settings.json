@@ -40,6 +40,7 @@
         "**/*.user": true,
         "**/*.userprefs": true,
         "**/*.wav": true,
+        "**/*.meta": true,
         "build/": true,
         "Build/": true,
         "library/": true,
@@ -53,5 +54,6 @@
         "Temp/": true,
         "UserSettings/": true
     },
-    "dotnet.defaultSolution": "Gates.sln"
+    "dotnet.defaultSolution": "Gates.sln",
+    "git.ignoreLimitWarning": true
 }
