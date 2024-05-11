@@ -23,7 +23,7 @@ MonoBehaviour:
     <Prefab>k__BackingField: {fileID: 2011266630248031834, guid: 73463165e62039248905743871e44f10, type: 3}
   - <Name>k__BackingField: Long floaty box
     <Id>k__BackingField: 2
-    <Size>k__BackingField: {x: 1, y: 2}
+    <Size>k__BackingField: {x: 2, y: 1}
     <Prefab>k__BackingField: {fileID: 6287003559819044326, guid: 01ae252aaf04ec84b8d1241cd452a6f4, type: 3}
   - <Name>k__BackingField: Big floaty box
     <Id>k__BackingField: 3
