@@ -13,7 +13,7 @@ public class GridPlacementSystem : MonoBehaviour
     //Used for Main object placement:
     [SerializeField] private ObjectListSO objectList; //Allows you to acces the list of objects
     [SerializeField] private GridData floorData, objectData; //Used for storing and checking grid datapr
-    private List<GameObject> placedGameObjects = new();
+    private List<GameObject> placedGameObjects = new(); //A list of placed gameObjects
     private int selectedObjectId = -1; //Id of selected object
 
     //Used for main grid worings:
@@ -24,9 +24,9 @@ public class GridPlacementSystem : MonoBehaviour
     private void Start() //Unity start
     {
         StopPlacement(); //Stops placement
-        floorData = new();
-        objectData = new();
-        previewRenderer = cellIndicator.GetComponentInChildren<Renderer>();
+        floorData = new(); //Initializes floorData
+        objectData = new(); //Initializes objectData
+        previewRenderer = cellIndicator.GetComponentInChildren<Renderer>(); //Initializes previewRenderer
     }
 
     public void StartPlacement(int Id) //Starts placement and shows grid
@@ -53,27 +53,27 @@ public class GridPlacementSystem : MonoBehaviour
         Vector3 mousePosition = mouseManger.GetMousePosition(); //Gets the mousePosition from mousePositionDetector script
         Vector3Int gridPosition = grid.WorldToCell(mousePosition); //Rounds mouseposition to nearest grid cell
 
-        bool canPlace = canPlaceTest(gridPosition, selectedObjectId);
-        if(canPlace == false)
-            return;
+        bool canPlace = canPlaceTest(gridPosition, selectedObjectId); //Checks if you can place
+        if(canPlace == false) //The actual check
+            return; //Returns if you can't place
 
         GameObject newObject = Instantiate(objectList.GridObjectData[selectedObjectId].Prefab); //Creates the currently selected prefab
         newObject.transform.position = grid.CellToWorld(gridPosition); //Sets the newObject to the current grid cell
-        placedGameObjects.Add(newObject);
-        GridData selectedData = objectList.GridObjectData[selectedObjectId].Id == 0 ? floorData : objectData;
-        selectedData.AddObject(gridPosition, objectList.GridObjectData[selectedObjectId].Size, objectList.GridObjectData[selectedObjectId].Id, placedGameObjects.Count -1);
+        placedGameObjects.Add(newObject); //It ads the object to placedGameObject
+        GridData selectedData = objectList.GridObjectData[selectedObjectId].Id == 0 ? floorData : objectData; //Checks if we acces floorData or objectData
+        selectedData.AddObject(gridPosition, objectList.GridObjectData[selectedObjectId].Size, objectList.GridObjectData[selectedObjectId].Id, placedGameObjects.Count -1); //Stores the info in GridData
 
     }
 
-    private bool canPlaceTest(Vector3Int gridPosition, int selectedObjectId)
+    private bool canPlaceTest(Vector3Int gridPosition, int selectedObjectId) //The test for can place
     {
-        GridData selectedData = objectList.GridObjectData[selectedObjectId].Id == 0 ? floorData : objectData;
-        return !selectedData.Blocked(gridPosition, objectList.GridObjectData[selectedObjectId].Size);
+        GridData selectedData = objectList.GridObjectData[selectedObjectId].Id == 0 ? floorData : objectData; //Checks if we should use floorData or objectData
+        return !selectedData.Blocked(gridPosition, objectList.GridObjectData[selectedObjectId].Size); //Checks if the slot is occupied
     }
 
-    private void StopPlacement()
+    private void StopPlacement() //Stops the placement
     {
-        selectedObjectId = -1;
+        selectedObjectId = -1; //Sets the id to -1 aka null
         GridVis.SetActive(false); //Hides the visualization for the grid
         cellIndicator.SetActive(false); //Hides the indicator for the current cell
         mouseManger.OnClicked -= PlaceStructure; //Stops PlaceStructure
@@ -87,8 +87,8 @@ public class GridPlacementSystem : MonoBehaviour
         Vector3 mousePosition = mouseManger.GetMousePosition(); //Gets the mousePosition from mousePossitionDetector script
         Vector3Int gridPosition = grid.WorldToCell(mousePosition); //Rounds mouseposition to nearest grid cell
 
-        bool canPlace = canPlaceTest(gridPosition, selectedObjectId);
-        previewRenderer.material.color = canPlace ? Color.white : Color.red;
+        bool canPlace = canPlaceTest(gridPosition, selectedObjectId); //Checks if you can place
+        previewRenderer.material.color = canPlace ? Color.white : Color.red; //If you can't place make the cellIndicator red
 
         mouseIndicator.transform.position = mousePosition; //Sets mouseindicator to mouseposition
         Vector3 pos = grid.CellToWorld(gridPosition); //Calculates the position of the cellindicator
