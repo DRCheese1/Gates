@@ -31,7 +31,6 @@ public class PreviewSystem : MonoBehaviour
         if(size.x > 0 || size.y > 0) //If the size is more than zero
         {
             cellIndicator.transform.localScale = new Vector3(size.x, 0, size.y); //Scales the cellindicator to encapsulate the object
-            cellIndicator.GetComponentInChildren<Renderer>().material.mainTextureScale = size; //Scales the texture to show all the grid cells
         }
     }
 
